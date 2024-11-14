@@ -1,0 +1,77 @@
+﻿@model GeneratingQrCode.Models.QrCodeModel?
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container">
+    <h1 class="display-4 mb-5 text-center mt-5">QR Code Generator - Create QR Codes for Free</h1>
+    <div class="row w-100">
+        <div class="col-5 mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Generate QR Code</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="CreateQrCode">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="mb-3">
+                            <label asp-for="QrCodeName" class="form-label"></label>
+                            <input asp-for="QrCodeName" class="form-control"/>
+                            <span asp-validation-for="QrCodeName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="QrCodeText" class="form-label"></label>
+                            <input asp-for="QrCodeText" class="form-control"/>
+                            <span asp-validation-for="QrCodeText" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <input type="submit" value="Generate QR Code" class="btn btn-dark text-center"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-7 mb-3">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">QrCode Preview</h5>
+                    @if (!string.IsNullOrEmpty(Model?.QrCodeText))
+                    {
+                        <a asp-action="DownloadQrCode" asp-route-qrCodeText="@Model.QrCodeText"
+                           asp-route-qrCodeName="@Model.QrCodeName" class="btn btn-warning">Download
+                            QR Code</a>
+                    }
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(ViewBag.QrCodeUri))
+                    {
+                        <div class="mx-auto text-center" style="max-width: 80%; max-height: 80%;">
+                            <img src="@ViewBag.QrCodeUri" alt="QR Code" class="img-thumbnail"/>
+                        </div>
+                    }
+                    else
+                    {
+                        <div style="height: 500px">
+                            <svg width="100%" height="100%" viewBox="-1 -1 23 23" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink" shape-rendering="crispEdges"
+                                 id="qr code">
+                                <rect id="qr background" fill-opacity="1" fill="rgb(255, 255, 255)" x="-1" y="-1"
+                                      width="23" height="23"></rect>
+                                <path fill-opacity="1" fill="rgb(0, 0, 0)" id="qr dark pixels" fill-rule="evenodd"
+                                      d="M 10 0 L 11 0 L 11 1 L 10 1 z M 12 0 L 13 0 L 13 2 L 12 2 z M 8 2 L 9 2 L 9 3 L 8 3 z M 10 2 L 11 2 L 11 3 L 10 3 z M 12 3 L 13 3 L 13 5 L 12 5 L 12 6 L 11 6 L 11 9 L 12 9 L 12 11 L 13 11 L 13 9 L 12 9 L 12 8 L 15 8 L 15 9 L 14 9 L 14 10 L 15 10 L 15 9 L 16 9 L 16 11 L 17 11 L 17 9 L 18 9 L 18 10 L 19 10 L 19 9 L 20 9 L 20 11 L 21 11 L 21 12 L 20 12 L 20 14 L 18 14 L 18 13 L 17 13 L 17 12 L 16 12 L 16 13 L 15 13 L 15 14 L 14 14 L 14 13 L 13 13 L 13 12 L 12 12 L 12 13 L 11 13 L 11 14 L 9 14 L 9 15 L 11 15 L 11 16 L 9 16 L 9 17 L 8 17 L 8 13 L 9 13 L 9 10 L 10 10 L 10 11 L 11 11 L 11 10 L 10 10 L 10 6 L 9 6 L 9 4 L 10 4 L 10 5 L 11 5 L 11 4 L 12 4 zM 14 11 L 15 11 L 15 12 L 14 12 z M 18 11 L 19 11 L 19 12 L 18 12 z M 8 6 L 9 6 L 9 10 L 8 10 L 8 9 L 6 9 L 6 10 L 5 10 L 5 9 L 4 9 L 4 8 L 8 8 z M 12 6 L 13 6 L 13 7 L 12 7 z M 0 8 L 3 8 L 3 11 L 2 11 L 2 9 L 1 9 L 1 10 L 0 10 z M 18 8 L 19 8 L 19 9 L 18 9 z M 4 10 L 5 10 L 5 11 L 6 11 L 6 12 L 7 12 L 7 11 L 8 11 L 8 13 L 3 13 L 3 12 L 4 12 z M 6 10 L 7 10 L 7 11 L 6 11 z M 1 11 L 2 11 L 2 13 L 0 13 L 0 12 L 1 12 z M 12 14 L 13 14 L 13 15 L 12 15 z M 16 14 L 17 14 L 17 15 L 16 15 z M 20 14 L 21 14 L 21 15 L 20 15 z M 14 15 L 15 15 L 15 17 L 14 17 z M 18 15 L 20 15 L 20 16 L 19 16 L 19 17 L 18 17 z M 12 16 L 13 16 L 13 17 L 12 17 z M 16 16 L 17 16 L 17 17 L 16 17 z M 20 16 L 21 16 L 21 17 L 20 17 z M 9 17 L 10 17 L 10 18 L 9 18 z M 11 17 L 12 17 L 12 19 L 13 19 L 13 17 L 14 17 L 14 18 L 15 18 L 15 17 L 16 17 L 16 19 L 17 19 L 17 17 L 18 17 L 18 18 L 19 18 L 19 19 L 18 19 L 18 20 L 19 20 L 19 19 L 20 19 L 20 20 L 21 20 L 21 21 L 17 21 L 17 20 L 16 20 L 16 21 L 13 21 L 13 20 L 12 20 L 12 21 L 11 21 L 11 19 L 10 19 L 10 18 L 11 18 zM 14 19 L 15 19 L 15 20 L 14 20 z M 19 17 L 20 17 L 20 18 L 19 18 z M 8 18 L 9 18 L 9 19 L 10 19 L 10 21 L 8 21 z M 20 18 L 21 18 L 21 19 L 20 19 z"></path>
+                                <path id="qr squares"
+                                      d="M0,0h7h0v0v7v0h0h-7h0v0v-7v0h0zM1,1h5h0v0v5v0h0h-5h0v0v-5v0h0zM2,2h3h0v0v3v0h0h-3h0v0v-3v0h0z M14,0h7h0v0v7v0h0h-7h0v0v-7v0h0zM15,1h5h0v0v5v0h0h-5h0v0v-5v0h0zM16,2h3h0v0v3v0h0h-3h0v0v-3v0h0z M0,14h7h0v0v7v0h0h-7h0v0v-7v0h0zM1,15h5h0v0v5v0h0h-5h0v0v-5v0h0zM2,16h3h0v0v3v0h0h-3h0v0v-3v0h0z"
+                                      fill-rule="evenodd" fill-opacity="1" fill="rgb(0, 0, 0)"></path>
+                            </svg>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

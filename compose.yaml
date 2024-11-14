@@ -1,0 +1,6 @@
+﻿services:
+  generatingqrcode:
+    image: generatingqrcode
+    build:
+      context: .
+      dockerfile: GeneratingQrCode/Dockerfile
