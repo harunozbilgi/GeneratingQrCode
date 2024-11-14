@@ -1,0 +1,8 @@
+/Users/harunozbilgi/Desktop/Trainings/GeneratingQrCode/GeneratingQrCode/bin/Release/net9.0/publish/GeneratingQrCode
+/Users/harunozbilgi/Desktop/Trainings/GeneratingQrCode/GeneratingQrCode/bin/Release/net9.0/publish/appsettings.Development.json
+/Users/harunozbilgi/Desktop/Trainings/GeneratingQrCode/GeneratingQrCode/bin/Release/net9.0/publish/appsettings.json
+/Users/harunozbilgi/Desktop/Trainings/GeneratingQrCode/GeneratingQrCode/bin/Release/net9.0/publish/GeneratingQrCode.dll
+/Users/harunozbilgi/Desktop/Trainings/GeneratingQrCode/GeneratingQrCode/bin/Release/net9.0/publish/GeneratingQrCode.deps.json
+/Users/harunozbilgi/Desktop/Trainings/GeneratingQrCode/GeneratingQrCode/bin/Release/net9.0/publish/GeneratingQrCode.runtimeconfig.json
+/Users/harunozbilgi/Desktop/Trainings/GeneratingQrCode/GeneratingQrCode/bin/Release/net9.0/publish/GeneratingQrCode.pdb
+/Users/harunozbilgi/Desktop/Trainings/GeneratingQrCode/GeneratingQrCode/bin/Release/net9.0/publish/QRCoder.dll
